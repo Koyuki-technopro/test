@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>不正解問題一覧</title>
+	<div th:replace="layouts/sidebar::sidebar"></div>
+</head>
+
+<body>
+	<div>
+		<h1>不正解問題一覧</h1>
+	</div>
+	<div>
+		<span>java silver</span>
+		<!--各問題の解きなおし画面に遷移する-->
+		<span><a href="">問題１</a></span>
+		<span>RDBMSは「Relational Database Management System」の略で、
+			データベースを管理するためのシステムである。</span>
+	</div>
+	<!-- 下記は問題が1問も表示されなかった場合-->
+	<!--    <div>-->
+	<!--	    <th:block th:if="${categoryList.size() >= 1}">-->
+	<!--		    <h2>不正解一覧に登録された問題はありません</h2>-->
+	<!--		</th:block>-->
+	<!--	</div>-->
+</body>
+
+</html>

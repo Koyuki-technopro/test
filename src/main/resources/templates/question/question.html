@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>問題画面</title>
+		<style>
+			.answer-section {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div th:replace="layouts/header::header"></div>
+		<h2>問題</h2>
+		<p th:text="${question.name}"></p>
+		<div>
+		<form th:action="@{/score}" th:object="${reviewForm}" method="post">
+		        <!-- 選択した回答の選択肢をフォームに送信し、QUESTIONSテーブルのANSWERと紐づくEXPLANATIONSテーブルのIDと一致すれば正解とする -->
+		        <!-- CSRFトークン -->
+				<input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+				<input type="hidden" id="userId" th:value="${question.userId}">
+				<input type="hidden" id="questionId" th:value="${question.id}">
+			    <div th:each="explanation, i : ${explanations}">
+			        <input type="radio" th:id="${'choice' + i.index}" name="selectedAnswer" th:value="${explanation.id}" th:checked="${i.index == 0}" />
+			        <label th:for="${'choice' + i.index}" th:text="${explanation.content}"></label>
+			    </div>
+		    <input type="button"class="button" id="answerButton" value="回答" onclick="submitAnswer()"/>
+		</form>
+		</div>
+		<div class="answer-section">
+			<div>
+				<h2>正解</h2>
+				<p th:text="${question.explanation.content}"></p>
+			</div>
+			<div>
+				<h2>解説</h2>
+				<p th:text="${question.comment}"></p>
+			</div>
+			<div th:if="${nextQuestionId != null}">
+			    <a th:href="@{/question/{userId}/{categoryId}/{questionsId}(userId=${userId}, categoryId=${categoryId}, questionsId=${nextQuestionId})}" class="button">次の問題</a>
+			</div>
+			<div th:if="${nextQuestionId == null}">
+			    <a href="/score" class="button">結果を表示</a>
+			</div>
+		</div>
+		<script>
+		function submitAnswer() {
+		    var xhr = new XMLHttpRequest();
+		    var url = '/score';
+		    xhr.open("POST", url, true);
+		    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		    // CSRFトークンが必要
+		    var token = document.querySelector('input[name="_csrf"]').value; // CSRFトークンの取得
+		    xhr.setRequestHeader("X-CSRF-TOKEN", token); // CSRFトークンをヘッダーに設定
+		
+		    // フォーム内のデータを取得
+		    var userId = document.getElementById('userId').value;
+			var questionId = document.getElementById('questionId').value;
+		    var selectedAnswer = document.querySelector('input[name="selectedAnswer"]:checked').value;
+			var data = JSON.stringify({
+			    userId: userId,
+			    questionId: questionId,
+			    selectedAnswer: selectedAnswer
+			});	
+		    xhr.onreadystatechange = function () {
+		        if (xhr.readyState === 4 && xhr.status === 200) {
+		            var response = JSON.parse(xhr.responseText);
+		            // 「回答ボタン」が押下されたときに「回答ボタン」を非表示にする
+		            document.getElementById("answerButton").style.display = "none";
+		            // 「回答ボタン」が押下されたときに回答セクションを表示する
+		            document.querySelector(".answer-section").style.display = "block";
+		        }
+		    };		
+		    xhr.send(data);
+		}
+		</script>
+	</body>
+</html>

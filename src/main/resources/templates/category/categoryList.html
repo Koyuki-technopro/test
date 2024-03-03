@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>問題集一覧</title>
+		<link rel="stylesheet" type="text/css" href="/css/debugger.css">
+	</head>
+	<style>
+		h1 {
+			font-size: 24px;
+			letter-spacing: 4px;
+			text-align: center;
+			margin: 48px 0;
+		}
+
+		h2 {
+			padding-left: 4%;
+			font-size: 20px;
+			font-weight: normal;
+		}
+
+		p {
+			display: inline-flex;
+			margin-left: 6%;
+		}
+
+		a {
+			width: 80px;
+		}
+
+		.categories {
+			position: absolute;
+		}
+
+		.categorylist {
+			margin: 0 10vw;
+			width: 80vw;
+		}
+
+		h2,
+		.category-content {
+			border-bottom: 2px solid #cad6fe;
+		}
+
+		.a-btn {
+			position: absolute;
+			right: 10%;
+			height: 32px;
+			width: 80px;
+			margin-right: 6%;
+		}
+	</style>
+
+	<body>
+		<h1>問題集一覧</h1>
+		<div class="categorylist">
+			<h2>問題集</h2>
+			<div class="category-content">
+				<p>基本情報</p>
+				<a th:href="@{/question/list/{userId}/1(userId=${userId})}" class="a-btn">問題</a>
+			</div>
+			<div class="category-content">
+				<p>java silver</p>
+				<a th:href="@{/question/list/{userId}/2(userId=${userId})}" class="a-btn">問題</a>
+			</div>
+			<div class="category-content">
+				<p>ORACLE MASTER Bronze</p>
+				<a th:href="@{/question/list/{userId}/3(userId=${userId})}" class="a-btn">問題</a>
+			</div>
+			<div class="category-content">
+				<p>ITパスポート</p>
+				<a th:href="@{/question/list/{userId}/4(userId=${userId})}" class="a-btn">問題</a>
+			</div>
+		</div>
+	</body>
+
+</html>
+
+<!--<div th:each="category : ${categories}">
+            <div th:if="${category.questions.size() >= 1}">
+                <span th:text="${category.category}"></span>
+                <a th:href="@{'/question/list?selectedCategory=' + ${category.category}}"><button>問題</button></a>
+            </div>
+        </div>
+        -->
+<!--        <div>-->
+<!--      基本情報-->
+<!--      <a href="/question/list"><button>問題</button></a>-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--      java silver-->
+<!--      <a href="/question/list"><button>問題</button></a>-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--      ORACLE MASTER Bronze-->
+<!--      <a href="/question/list"><button>問題</button></a>-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--      ITパスポート-->
+<!--      <a href="/question/list"><button>問題</button></a>-->
+<!--    </div>-->
+<!--    </div>-->

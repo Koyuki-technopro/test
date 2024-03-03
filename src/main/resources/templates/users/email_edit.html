@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>メールアドレス変更</title>
+</head>
+<body>
+	<h1>メールアドレス変更</h1>
+	<form action="/users/email/save" method="post">
+		<div>
+			<label>メールアドレス</label>
+		</div>
+		<div>
+			<input type="email" field="email">
+		</div>
+		<div>
+			<input type="submit" class="submit-button" value="編集" />
+			<a href="/users/myPage/{id}">戻る</a>
+		</div>
+	</form>
+</body>
+</html>

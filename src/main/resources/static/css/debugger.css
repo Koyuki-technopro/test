@@ -1,0 +1,92 @@
+body {
+	font-family: 'Noto Sans', sans-serif;
+	margin: 0;
+	color: #333;
+}
+
+h1 {
+	font-size: 24px;
+	letter-spacing: 4px;
+	text-align: center;
+	margin: 48px 0;
+}
+
+div {
+	margin: 15px 0;
+}
+
+option {
+	font-size: 15px;
+}
+
+label {
+	letter-spacing: 1px;
+	font-size: 18px;
+	font-weight: bolder;
+}
+
+select {
+	width: 960px;
+	height: 30px;
+	background-color: #e7eaf3;
+	border: 3px solid #cad6fe;
+}
+
+input[type="text"] {
+	width: 955px;
+	height: 30px;
+	background-color: #e7eaf3;
+	border: 3px solid #cad6fe;
+}
+
+input[type="radio"] {
+	width: 16px;
+	height: 16px;
+}
+
+textarea {
+	width: 960px;
+	height: 100px;
+	background-color: #e7eaf3;
+	border: 3px solid #cad6fe;
+}
+
+/* class="btn"の装飾 */
+.btn, .a-btn, button, input[type="submit"]  {
+	width: 120px;
+	height: 40px;
+	background-color: #141e50;
+	border: 3px solid #CAD6FE;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: lighter;
+	text-align: center;
+	cursor: pointer;
+}
+
+.a-btn {
+  width: 114px;
+  height: 35px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* マウスオーバー時 */
+.btn:hover,
+.a-btn:hover {
+  background-color: #080d29;
+}
+
+/* class="wrapper"の中央揃え */
+.wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.error-message {
+    color: red;
+    font-weight: lighter;
+    font-size: 12px;
+}

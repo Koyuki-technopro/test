@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>問題新規登録</title>
+	<div th:replace="layouts/sidebar::sidebar"></div>
+</head>
+
+<body>
+	<h1>問題新規登録</h1>
+
+	<form th:action="@{/question/create}" th:object="${explanationRequest}" method="post">
+
+		<div>
+			<label for="questionCreate">問題集</label>
+		</div>
+		
+		<select id="questionCreate" name="questionCreate">
+			<option th:field="*{questionCreate}" value=1>基本情報</option>
+			<option th:field="*{questionCreate}" value=2>java silver</option>
+			<option th:field="*{questionCreate}" value=3>ORACLE MASTER Bronze</option>
+			<option th:field="*{questionCreate}" value=4>ITパスポート</option>
+		</select>
+
+		<div>
+			<label for="correctChoice">正解の選択肢を選択してください</label>
+		</div>
+
+		<div>
+			<label for="choice1">選択肢1</label>
+			<div>
+				<input type="radio" th:field="*{answer}" id="choice1" name="choices" value="1" th:checked="true">
+				<input type="text" th:field="*{choice1}" id="textChoice1" name="textChoice1" required>
+			</div>
+		</div>
+
+		<div>
+
+			<label for="choice2">選択肢2</label>
+			<div>
+				<input type="radio" th:field="*{answer}" id="choice2" name="choices" value="2">
+				<input type="text" th:field="*{choice2}" id="textChoice2" name="textChoice2" required>
+			</div>
+		</div>
+
+		<div>
+
+			<label for="choice3">選択肢3</label>
+			<div>
+				<input type="radio" th:field="*{answer}" id="choice3" name="choices" value="3">
+				<input type="text" th:field="*{choice3}" id="textChoice3" name="textChoice3" required>
+			</div>
+		</div>
+
+		<div>
+
+			<label for="choice4">選択肢4</label>
+			<div>
+				<input type="radio" th:field="*{answer}" id="choice4" name="choices" value="4">
+				<input type="text" th:field="*{choice4}" id="textChoice4" name="textChoice4" required>
+			</div>
+		</div>
+
+		<div>
+			<label for="questionText">問題文</label>
+		</div>
+		<input type="text" th:field="*{questionText}" id="questionText" name="questionText" required>
+		<div>
+			<div>
+				<label for="explanation">解説文</label>
+			</div>
+			<input type="text" th:field="*{explanation}" id="explanation" name="explanation" required>
+		</div>
+		<div>
+			<input type="submit" value="登録する" class="button">
+		</div>
+
+
+	</form>
+</body>
+
+</html>

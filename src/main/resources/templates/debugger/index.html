@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>テスト画面</title>
+    <div th:replace="layouts/header::header"></div>
+</head>
+<body>
+	<P>ログインテストのために作成。問題集一覧画面が完成後、遷移先の変更が必要</P>
+	<p>ユーザ名：<span sec:authentication="principal.user.name"></span></p>
+	<p>メールアドレス：<span sec:authentication="principal.user.email"></span></p>
+	<form th:action="@{/logout}" method="post">
+        <input type="submit" value="ログアウト" />
+    </form>
+</body>
+</html>

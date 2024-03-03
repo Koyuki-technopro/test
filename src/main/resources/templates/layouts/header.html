@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<header th:fragment="header">
+		<img id="logoImg" src="/img/LogoImg.png" alt="#デバッガーの喜び画像" />
+		<div id="headerName" onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+			<a style="cursor:pointer;"><p><span sec:authentication="principal.user.name"></span></p></a>
+		</div>
+		<div id="open" style="display:none;clear:both;">
+			<ul id="headermenu">
+				<li>
+					<form th:action="@{/logout}" method="post">
+					<input type="submit" value="ログアウト" />
+				</li>
+			</ul>
+		</div>
+	</header>
+</body>
+
+</html>

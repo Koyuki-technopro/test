@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>スコア表示画面</title>
+  </head>
+  <body>
+    <div>
+       <h1 th:text=" ${correctAnswers} + ' 門/ ' + ${totalQuestions} + ' 門中 '"></h1>
+    </div>
+    <div>
+      <h2>正解</h2>
+    </div>
+    <div>
+      <a class="button" th:href="@{/category/list}">問題集一覧</a>
+    </div>
+  </body>
+</html>

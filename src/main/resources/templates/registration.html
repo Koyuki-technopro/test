@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>ユーザー新規登録</title>
+		<link rel="stylesheet" type="text/css" href="css/debugger.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+
+	<body>
+		<img class="debuggerBgImg" src="img/debuggerBgImg.png" alt="#デバッガーの喜び背景画像" />
+		<div class="wrapper">
+			<img class="logoImg" src="img/LogoImg.png" alt="#デバッガーの喜び画像" />
+		</div>
+		<div class="background-box-create">
+			<h1>新規登録</h1>
+			<div class="login-content-create">
+				<form th:action="@{/registration}" th:object="${userRequest}" method="post">
+					<div class="form-content-create">
+						<label class="textbox-text">ユーザー名</label>
+						<input id="textbox" type="text" th:field="*{name}" />
+						<span class="error-message" th:errors="*{name}"></span>
+					</div>
+					<div class="form-content-create">
+						<label class="textbox-text">メールアドレス</label>
+						<input class="textbox" type="email" th:field="*{email}" />
+						<span class="error-message" th:errors="*{email}"></span>
+						<span class="error-message" th:if="${emailExistsError}">
+							<span th:text="${emailExistsError}"></span>
+						</span>
+					</div>
+					<div class="form-content-create">
+						<label class="textbox-text">パスワード</label>
+						<input class="textbox" type="password" th:field="*{password}" />
+						<span class="error-message" th:errors="*{password}"></span>
+						<span class="error-message" th:if="${validationErrorPassword}">
+							<span th:text="${validationErrorPassword}"></span>
+						</span>
+					</div>
+					<div class="form-content-create">
+						<label class="textbox-text">パスワード（再確認）</label>
+						<input class="textbox" type="password" th:field="*{confirmPassword}" />
+						<span class="error-message" th:errors="*{confirmPassword}"></span>
+					</div>
+					<div class="btn-content">
+						<input type="submit" class="btn" value="アカウント登録">
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+
+</html>

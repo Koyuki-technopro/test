@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>問題編集画面</title>
+	<link rel="stylesheet" href="C:\sl_workspace\debugger_joy\src\main\resources\static\css\debugger.css">
+</head>
+
+<body>
+	<h1>問題編集画面</h1>
+	<form action="#" method="post">
+		<!--form th:action="@{/question/edit/{id}(id=${id)}" th:object="${}" method="post"--><!--/form-->
+		<div>
+			<label for="question-book">問題集</label>
+		</div>
+		<select id="questionCreate" name="questionCreate">
+			<option value="基本情報">基本情報</option>
+			<option value="java silver">java silver</option>
+			<option value="ORACLE MASTER Bronze">ORACLE MASTER Bronze</option>
+			<option value="ITパスポート">ITパスポート</option>
+		</select>
+		<div>
+			<label for="direction">正解の選択肢を選択してください</label>
+		</div>
+		<div>
+			<label for="choice1">選択肢1</label>
+		</div>
+		<div>
+			<input type="radio" id="choice1" name="answer" value="choice1" checked />
+			<input type="text" name="question" value="" required />
+		</div>
+		<div>
+			<label for="choice2">選択肢2</label>
+		</div>
+		<div>
+			<input type="radio" id="choice2" name="answer" value="choice2" />
+			<input type="text" name="question" value="" required />
+		</div>
+		<div>
+			<label for="choice3">選択肢3</label>
+		</div>
+		<div>
+			<input type="radio" id="choice3" name="answer" value="choice3">
+			<input type="text" name="question" value="" required />
+		</div>
+		<div>
+			<label for="choice4">選択肢4</label>
+		</div>
+		<div>
+			<input type="radio" id="choice4" name="answer" value="choice4">
+			<input type="text" name="question" value="" required />
+		</div>
+		<div>
+			<label for="question">問題文</label>
+		</div>
+		<div>
+			<textarea id="question" name="question" rows="6" cols="60" required></textarea>
+		</div>
+		<div>
+			<label for="comment">解説文</label>
+		</div>
+		<div class="wrapper">
+			<textarea id="comment" name="comment" rows="6" cols="60" required></textarea>
+		</div>
+		<div class="wrapper">
+			<input type="submit" value="編集する"/>
+		</div>
+	</form>
+</body>
+
+</html>

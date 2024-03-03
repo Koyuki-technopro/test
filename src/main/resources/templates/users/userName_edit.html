@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ユーザー名変更画面</title>
+</head>
+<body>
+	<h1>ユーザー名変更</h1>
+	<form action="/users/userName/save" method="post">
+		<div>
+			<label>ユーザー名</label>
+		</div>
+		<div>
+			<input type="text" field="name">
+		</div>
+		<div>
+			<input type="submit" class="submit-button" value="編集" />
+			<a href="/users/myPage/{id}">戻る</a>
+		</div>
+	</form>
+</body>
+</html>

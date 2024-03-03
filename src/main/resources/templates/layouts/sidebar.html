@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lamg="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>共通サイドバー</title>
+</head>
+
+<body>
+	<nav th:fragment="sidebar" class="sidebar">
+		<div>
+			<a th:href="@{/question/create}">新規作成</a>
+		</div>
+		<div>
+			<a th:href="@{/category/list}">問題集</a>
+		</div>
+	</nav>
+</body>
+
+</html>

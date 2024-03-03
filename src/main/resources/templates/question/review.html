@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>解き直し画面</title>
+  <style>
+    .answer-section {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>問題１</h2>
+  <div>
+    <p>
+      RDBMSは「Relational Database Management System」の略で、
+      データベースを管理するためのシステムである。
+    </p>
+  </div>
+  <div>
+    <form action="#" method="post">
+      <div>
+        <input type="radio" id="choice1" name="question" value="choice1" checked/>
+        <label for="choice1">
+          RDBMSは「Relational Database Management System」の略だ
+        </label>
+      </div>
+      <div>
+        <input type="radio" id="choice2" name="question" value="choice2" />
+        <label for="choice2">
+          DBMSは「Relational Database Management System」の略だ
+        </label>
+      </div>
+      <div>
+        <input type="radio" id="choice3" name="question" value="choice3" />
+        <label for="choice3">
+          RDBMSは「Relational Database Management System」の略だ
+        </label>
+      </div>
+      <div>
+        <input type="radio" id="choice4" name="question" value="choice4" />
+        <label for="choice4">
+          DBMSは「Relational Database Management System」の略だ
+        </label>
+      </div>
+      <div>
+        <input
+          type="button"
+          id="answerButton"
+          value="回答"
+          onclick="showAnswerSection()"
+        />
+      </div>
+    </form>
+  </div>
+  <!-- 最初は非表示にする -->
+  <div class="answer-section">
+    <div>
+      <h2>正解</h2>
+    </div>
+    <div>
+      <p>RDBMSは「Relational Database Management System」の略だ</p>
+    </div>
+    <div>
+      <h2>解説</h2>
+    </div>
+    <div>
+      <p>
+        RDBMSは「Relational Database Management System」の略で、
+        データベースを管理するためのシステムである。
+      </p>
+    </div>
+    <div>
+      <a href="/question/miss" class="button">不正解問題一覧</a>
+    </div>
+  </div>
+
+  <script>
+    function showAnswerSection() {
+      // 「回答ボタン」が押下されたときに「回答ボタン」を非表示にする
+      document.getElementById("answerButton").style.display = "none";
+      // 「回答ボタン」が押下されたときに回答セクションを表示する
+      document.querySelector(".answer-section").style.display = "block";
+    }
+  </script>
+</body>
+</html>

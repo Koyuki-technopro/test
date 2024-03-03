@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>問題一覧</title>
+		<!-- Bootstrap CSS の読み込み -->
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/debugger.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<style>
+		h1 {
+			font-size: 24px;
+			letter-spacing: 4px;
+			text-align: center;
+			margin: 48px 0;
+		}
+
+		#returnButton {
+			color: #333;
+			border: 2px solid #cad6fe;
+			background-color: transparent;
+			margin: 8px 32px;
+		}
+
+		#a-btn,
+		#test-btn,
+		#returnButton {
+			width: 120px;
+			height: 40px;
+			font-size: 14px;
+			font-weight: lighter;
+			text-align: center;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		#a-btn,
+		#test-btn {
+			color: #fff;
+			background-color: #141e50;
+			border: 3px solid #cad6fe;
+		}
+
+		#a-btn {
+			height: 32px;
+			width: 60px;
+			background-color: #595bd3;
+		}
+
+		#test-btn {
+			position: absolute;
+			top: 27vh;
+			right: 10vw;
+			margin-right: 3vw;
+		}
+
+		.question-content {
+			width: 100vw;
+			padding: 0 10vw;
+		}
+		
+		.question-name {
+			padding-left: 2%;
+		}
+
+		table {
+			width: 80vw;
+		}
+
+		th {
+			font-weight: normal;
+		}
+
+		tr {
+			height: 80px;
+			border-bottom: 2px solid #cad6fe;
+		}
+
+		.td-text {
+			padding-left: 4%;
+		}
+
+		.edit {
+			position: absolute;
+			right: 10vw;
+			margin-right: 7vw;
+		}
+
+		#delete {
+			position: absolute;
+			right: 13vw;
+		}
+	</style>
+
+	<body>
+		<div>
+			<a href="/category/list" class="button" id="returnButton">
+				< 戻る</a>
+		</div>
+		<div>
+			<h1>問題一覧</h1>
+		</div>
+
+		<div class="question-content">
+			<table>
+				<thead>
+					<tr>
+						<th th:text="${category.category}" class="question-name">問題集名</th>
+						<th class="test-content">
+							<a th:href="@{/question/{userId}/{categoryId}/{questionsId}(userId=${userId}, categoryId=${categoryId}, questionsId=${questionsId})}"
+								id="test-btn">テスト開始</a>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="question : ${questions}">
+						<tr>
+							<td th:text="${question.name}" class="td-text">問題文</td>
+							<td class="td-btn">
+								<a th:href="@{/question/edit/{id}(id=${question.id})}" class="edit" id="a-btn">編集</a>
+							</td>
+							<td class="td-btn">
+								<a id="delete" class="btn btn-danger btn-sm m-1 link-delete"
+									th:href="@{/question/delete/{id}(id=${category.id})}">削除</a>
+							</td>
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- 削除モーダル -->
+		<div th:replace="fragments :: confirm_modal"></div>
+		<!-- Bootstrap JS の読み込み -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</body>
+	<script>
+		document.addEventListener('DOMContentLoaded', (event) => {
+			document.querySelectorAll('.link-delete').forEach(link => {
+				link.addEventListener('click', function (e) {
+					e.preventDefault();
+					document.getElementById('yesButton').href = this.getAttribute('href');
+					$('#confirmModal').modal('show');
+				});
+			});
+		});
+	</script>
+
+</html>
+<!-- <style>
+    /* CSSは作業途中です */
+
+    #returnButton {
+      width: 144px;
+      height: 40px;
+      border: 2px solid #cad6fe;
+      background-color: transparent;
+    }
+
+    th {
+      text-align: left;
+      font-weight: normal;
+    }
+  </style> -->
